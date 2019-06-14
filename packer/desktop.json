@@ -1,0 +1,19 @@
+{
+  "builders": [
+    {
+      "instance_name": "crdhost-test",
+      "type": "googlecompute",
+      "project_id": "hc-da-test",
+      "source_image_family": "debian",
+      "ssh_username": "packer",
+      "zone": "us-central1-a",
+      "machine_type": "n1-standard-1"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": ["install-desktop.sh", "install-devtools.sh"]
+    }
+  ]
+}
