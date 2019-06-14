@@ -1,0 +1,9 @@
+.vagrant
+.terraform
+terraform.tfstate*
+
+backend.conf
+local.env
+crash.log
+
+packer-builder.json
