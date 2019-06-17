@@ -15,8 +15,8 @@ fi
 echo "=== install Golang ==="
 wget https://dl.google.com/go/go${GO_VERSION}.${OS}-${ARCH}.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.${OS}-${ARCH}.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-source ~/.bashrc
+sudo echo 'export PATH=$PATH:/usr/local/go/bin' > /etc/profile.d/golang.sh
+source /etc/profile.d/golang.sh
 if [[ $(go version) != *${GO_VERSION}* ]]; then
   exit 1
 fi
