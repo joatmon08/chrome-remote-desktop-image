@@ -1,0 +1,8 @@
+---
+name: remote-desktop
+title: validate image used for remote desktop
+summary: Verify installed packages
+version: 1.0.0
+maintainer: Rosemary Wang
+copyright: Rosemary Wang
+license: MPL 2.0
