@@ -1,13 +1,20 @@
 {
   "builders": [
     {
-      "instance_name": "crdhost-test",
+      "image_name": "chrome-remote-desktop-debian-9-{{timestamp}}",
+      "instance_name": "crd-{{uuid}}",
+      "image_family": "debian-9",
       "type": "googlecompute",
       "project_id": "hc-da-test",
-      "source_image_family": "debian",
+      "source_image_family": "debian-9",
+      "source_image_project_id": "debian-cloud",
       "ssh_username": "packer",
       "zone": "us-central1-a",
-      "machine_type": "n1-standard-1"
+      "machine_type": "n1-standard-1",
+      "labels": {
+        "builder": "packer",
+        "owner": "rosemary"
+      }
     }
   ],
   "provisioners": [
