@@ -1,26 +1,40 @@
 {
+  "variables": {
+    "username": "{{env `CRD_USERNAME`}}",
+    "gcloud_zone": "{{env `GCLOUD_ZONE`}}"
+  },
   "builders": [
     {
       "image_name": "chrome-remote-desktop-debian-9-{{timestamp}}",
-      "instance_name": "crd-{{uuid}}",
+      "instance_name": "crd-test-{{uuid}}",
       "image_family": "debian-9",
       "type": "googlecompute",
       "project_id": "hc-da-test",
       "source_image_family": "debian-9",
       "source_image_project_id": "debian-cloud",
-      "ssh_username": "packer",
-      "zone": "us-central1-a",
+      "ssh_username": "{{user `username`}}",
+      "zone": "{{user `gcloud_zone`}}",
       "machine_type": "n1-standard-1",
       "labels": {
         "builder": "packer",
-        "owner": "rosemary"
+        "owner": "{{user `username`}}"
+      },
+      "image_labels": {
+        "builder": "packer",
+        "owner": "{{user `username`}}"
       }
     }
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "xscreensaver",
+      "destination": "~/.xscreensaver"
+    },
+    {
       "type": "shell",
-      "scripts": ["install-desktop.sh", "install-devtools.sh"]
+      "execute_command": "{{.Vars}} bash '{{.Path}}'",
+      "scripts": ["./install-desktop.sh", "./install-devtools.sh"]
     }
   ]
 }
