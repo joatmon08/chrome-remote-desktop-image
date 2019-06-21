@@ -21,6 +21,12 @@ echo "=== disable display ==="
 
 sudo systemctl disable lightdm.service
 
+
+echo "=== disable screensaver ==="
+xset -dpms
+xset s off
+xset s noblank
+
 echo "=== install Chrome ==="
 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

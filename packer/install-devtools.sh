@@ -15,7 +15,7 @@ fi
 echo "=== install Golang ==="
 wget https://dl.google.com/go/go${GO_VERSION}.${OS}-${ARCH}.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.${OS}-${ARCH}.tar.gz
-sudo echo 'export PATH=$PATH:/usr/local/go/bin' > ${HOME}/.profile
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ${HOME}/.profile
 source ${HOME}/.profile
 if [[ $(go version) != *${GO_VERSION}* ]]; then
   exit 1
@@ -31,6 +31,14 @@ sudo apt-get install -y apt-transport-https
 sudo apt-get update -y
 sudo apt-get install -y code
 sudo apt install --assume-yes --fix-broken
+code --version
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+code --install-extension ms-vscode.Go
+code --install-extension eamodio.gitlens
+code --install-extension stkb.rewrap
+code --install-extension wholroyd.HCL
 
 
 echo "== install terraform ==="
