@@ -2,7 +2,10 @@ control 'check golang' do
   impact 1.0
   title 'confirm go installed'
   desc 'confirm go installed'
-  describe command('go version') do
+  describe file('/usr/local/go/bin') do
+    it { should exist }
+  end
+  describe command('/usr/local/go/bin') do
     its('stdout') { should include '1.12' }
   end
 end
