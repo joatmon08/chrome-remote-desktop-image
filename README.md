@@ -39,8 +39,15 @@ anywhere, any time. Using code, of course.
    make packer-build
    ```
 
-1. Update the zone you want to deploy the desktop
-   and deploy.
+1. Update the variable file (`local.env`) with zone & image name.
+
+1. Get the OAuth token for the remote desktop setup.
+   - `make code-retrieve`
+   - Click through the browser, copy the URL with the `code=` in it.
+   - `make URL='<returned url>' code-parse`
+   - Copy the output and add it to `local.env` under `TF_VAR_crd_code`.
+
+1. Deploy.
    ```shell
    source local.env
    make desktop-build
