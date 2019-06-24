@@ -8,3 +8,40 @@ anywhere, any time. Using code, of course.
 - Terraform
 - Vagrant
 - Packer
+
+## Usage
+
+1. Add variables to `local.env`.
+   ```
+   export TF_VAR_pgp_key=
+   export TF_VAR_project=
+   export TF_VAR_region=
+   export PASSPHRASE=
+   
+   export GCLOUD_ZONE=
+
+   export TF_VAR_crd_code=
+   export TF_VAR_crd_pin=
+   export TF_VAR_image=
+   export TF_VAR_crd_user=
+   export TF_VAR_public_key_file=
+   ```
+
+1. Create the service account user.
+   ```shell
+   source local.env
+   make gcp-bootstrap
+   ```
+
+1. Build the image.
+   ```shell
+   source local.env
+   make packer-build
+   ```
+
+1. Update the zone you want to deploy the desktop
+   and deploy.
+   ```shell
+   source local.env
+   make desktop-build
+   ```
