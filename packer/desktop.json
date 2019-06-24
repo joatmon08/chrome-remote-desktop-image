@@ -1,6 +1,6 @@
 {
   "variables": {
-    "username": "{{env `CRD_USERNAME`}}",
+    "username": "{{env `TF_VAR_crd_user`}}",
     "gcloud_zone": "{{env `GCLOUD_ZONE`}}"
   },
   "builders": [
@@ -26,11 +26,6 @@
     }
   ],
   "provisioners": [
-    {
-      "type": "file",
-      "source": "xscreensaver",
-      "destination": "~/.xscreensaver"
-    },
     {
       "type": "shell",
       "execute_command": "{{.Vars}} bash '{{.Path}}'",
