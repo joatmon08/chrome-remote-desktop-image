@@ -6,6 +6,7 @@ anywhere, any time. Using code, of course.
 ## Pre-Requisites
 
 - Terraform
+- Terraform Cloud
 - Vagrant
 - Packer
 
@@ -25,6 +26,15 @@ anywhere, any time. Using code, of course.
    export TF_VAR_image=
    export TF_VAR_crd_user=
    export TF_VAR_public_key_file=
+   ```
+
+1. Create a `backend.conf` file with TF Cloud
+   organization and workspace.
+   ```
+   organization = "my-tf-org"
+   workspaces {
+     name = "my-workspace"
+   }
    ```
 
 1. Create the service account user.
