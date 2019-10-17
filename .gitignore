@@ -7,3 +7,5 @@ local.env
 crash.log
 
 packer-builder.json
+
+node_modules/
