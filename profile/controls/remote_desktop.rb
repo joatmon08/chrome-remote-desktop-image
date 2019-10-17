@@ -27,3 +27,21 @@ control 'check git' do
     its('stdout') { should include '2.11' }
   end
 end
+
+control 'check docker' do
+  impact 1.0
+  title 'confirm docker installed'
+  desc 'confirm docker installed'
+  describe command('docker version') do
+    its('stdout') { should include '19.03.3' }
+  end
+end
+
+control 'check consul-k8s-dev' do
+  impact 1.0
+  title 'confirm consul-k8s-dev installed'
+  desc 'confirm consul-k8s-dev installed'
+  describe command('consul-k8s-dev -h') do
+    its('stdout') { should include 'up' }
+  end
+end
