@@ -1,10 +1,10 @@
 gcp-bootstrap:
-	(cd gcp && terraform init -backend-config backend.conf)
-	(cd gcp && terraform apply)
-	@(cd gcp && terraform output private_key_file | base64 -D | gpg --batch --pinentry-mode loopback --command-fd 0 --passphrase ${PASSPHRASE} -d -- | base64 -D > ../packer-builder.json)
+	(cd gcp-account && terraform init)
+	(cd gcp-account && terraform apply)
+	@(cd gcp-account && terraform output private_key_file | base64 -D | gpg --batch --pinentry-mode loopback --command-fd 0 --passphrase ${PASSPHRASE} -d -- | base64 -D > ../packer-builder.json)
 
 packer-build:
-	(cd packer && GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/packer-builder.json packer build desktop.json)
+	cd packer && packer build desktop.json
 
 test:
 	(cd vagrant && vagrant up)
