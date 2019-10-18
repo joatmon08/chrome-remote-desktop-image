@@ -8,7 +8,7 @@ OS="linux"
 ARCH="amd64"
 
 GO_VERSION="1.13.3"
-TERRAFORM_VERSION="0.12.10"
+TERRAFORM_VERSION="0.12.11"
 
 sudo DEBIAN_FRONTEND=noninteractive apt install -y git unzip curl
 
