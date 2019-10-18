@@ -20,6 +20,16 @@ func TestPackerVariablesSet(t *testing.T) {
 	}
 }
 
+func TestCommitHash(t *testing.T) {
+	value, ok := os.LookupEnv("COMMIT_HASH")
+	if !ok {
+		t.Errorf("%s is undefined", "COMMIT_HASH")
+	}
+	if len(value) != 7 {
+		t.Errorf("%s was not truncated correctly", value)
+	}
+}
+
 func TestGoogleCredentials(t *testing.T) {
 	filename, ok := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALS")
 	if !ok {
