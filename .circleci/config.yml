@@ -27,29 +27,25 @@ jobs:
     <<: *defaults
     docker:
       - image: circleci/golang:1.13
-    environment:
-      COMMIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/chrome-remote-desktop-image/workspace
       - run:
           name: Run some checks to ensure the image is ready to build
-          command: make unit
+          command: COMMIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7) make unit
     
   build:
     <<: *defaults
     docker:
       - image: hashicorp/packer
-    environment:
-      COMMIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/chrome-remote-desktop-image/workspace
       - run:
           name: Build and test image
-          command: cd packer && packer build desktop.json
+          command: cd packer && COMMIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7) packer build desktop.json
 
 workflows:
   version: 2
