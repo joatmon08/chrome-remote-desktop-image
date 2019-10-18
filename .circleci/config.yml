@@ -45,7 +45,7 @@ jobs:
           at: /tmp/chrome-remote-desktop-image/workspace
       - run:
           name: Build and test image
-          command: make build
+          command: cd packer && packer build desktop.json
 
 workflows:
   version: 2
