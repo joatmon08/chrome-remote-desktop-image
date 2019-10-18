@@ -1,1 +1,0 @@
-Includes testing of Packer-built remote desktop
