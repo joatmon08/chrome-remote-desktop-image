@@ -1,33 +1,63 @@
 version: 2
 
 defaults: &defaults
+  working_directory: ~/chrome-remote-desktop-image
   environment:
-    GCLOUD_ZONE: "us-east-1"
+    GOOGLE_COMPUTE_ZONE: us-central1-a
+    GOOGLE_APPLICATION_CREDENTIALS: ~/chrome-remote-desktop-image/workspace/packer-builder.json
 
 jobs:
-  unit:
+
+  setup:
+    <<: *defaults
     docker:
       - image: circleci/golang:1.13
     steps:
       - checkout
+      - run: mkdir -p workspace
+      - run:
+          name: set up service account keys
+          command: echo $GCLOUD_SERVICE_KEY > workspace/packer-builder.json
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - packer-builder.json
+
+  unit:
+    <<: *defaults
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
       - run:
           name: Run some checks to ensure the image is ready to build
-          command: COMMIT_HASH=$CIRCLE_SHA1 make unit
+          command: make unit
     
   build:
+    <<: *defaults
     docker:
       - image: hashicorp/packer
     steps:
       - checkout
+      - attach_workspace:
+          at: workspace
       - run:
           name: Build and test image
-          command: COMMIT_HASH=$CIRCLE_SHA1 make unit make packer-build
+          command: cd packer && packer build -var commit_hash=${CIRCLE_SHA1} desktop.json
 
 workflows:
   version: 2
   image:
     jobs:
-      - unit
+      - setup
+      - unit:
+          requires:
+            - setup
+          filters:
+            branches:
+              only: master
       - build:
           requires:
             - unit
