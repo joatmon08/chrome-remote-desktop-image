@@ -15,9 +15,10 @@ jobs:
       - image: circleci/golang:1.13
     steps:
       - checkout
+      - run: mkdir -p workspace
       - run:
           name: set up service account keys
-          command: make setup
+          command: echo ${GCLOUD_SERVICE_KEY} > workspace/packer-builder.json
       - persist_to_workspace:
           root: workspace
           paths:
