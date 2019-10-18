@@ -2,7 +2,7 @@
   "variables": {
     "username": "{{env `TF_VAR_crd_user`}}",
     "gcloud_zone": "{{env `GOOGLE_COMPUTE_ZONE`}}",
-    "commit_hash": null
+    "commit_hash": "{{env `COMMIT_HASH`}}"
   },
   "builders": [
     {

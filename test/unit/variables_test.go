@@ -9,6 +9,7 @@ var packerVariables = []string{
 	"TF_VAR_crd_user",
 	"GOOGLE_COMPUTE_ZONE",
 	"GOOGLE_APPLICATION_CREDENTIALS",
+	"COMMIT_HASH",
 }
 
 func TestPackerVariablesSet(t *testing.T) {
