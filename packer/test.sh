@@ -17,12 +17,6 @@ if [[ $(terraform version) != *"0.12"* ]]; then
   exit 1
 fi
 
-which consul-k8s-dev
-if [[ $? -ne 0 ]]; then
-  echo "consul-k8s-dev failed to install"
-  exit 1
-fi
-
 if [[ $(docker version --format '{{.Client.Version}}') != *"19.03"* ]]; then
   echo "Docker does not have correct version"
   exit 1
