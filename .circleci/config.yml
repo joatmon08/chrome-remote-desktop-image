@@ -4,8 +4,8 @@ defaults: &defaults
   working_directory: /tmp/chrome-remote-desktop-image
   environment:
     GOOGLE_COMPUTE_ZONE: us-central1-a
+    COMMIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
     GOOGLE_APPLICATION_CREDENTIALS: /tmp/chrome-remote-desktop-image/workspace/packer-builder.json
-    COMMIT_HASH: test
 
 jobs:
 
