@@ -11,7 +11,7 @@ jobs:
   setup:
     <<: *defaults
     docker:
-      - image: circleci/golang:1.13
+      - image: joatmon08/circleci-hashistack
     steps:
       - checkout
       - run: mkdir -p workspace
@@ -26,7 +26,7 @@ jobs:
   unit:
     <<: *defaults
     docker:
-      - image: circleci/golang:1.13
+      - image: joatmon08/circleci-hashistack
     steps:
       - checkout
       - attach_workspace:
@@ -38,7 +38,7 @@ jobs:
   build:
     <<: *defaults
     docker:
-      - image: hashicorp/packer
+      - image: joatmon08/circleci-hashistack
     steps:
       - checkout
       - attach_workspace:
