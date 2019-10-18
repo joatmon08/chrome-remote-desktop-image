@@ -7,7 +7,7 @@ echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selecti
 OS="linux"
 ARCH="amd64"
 
-GO_VERSION="1.13.1"
+GO_VERSION="1.13.3"
 TERRAFORM_VERSION="0.12.10"
 
 sudo DEBIAN_FRONTEND=noninteractive apt install -y git unzip curl
@@ -15,10 +15,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y git unzip curl
 echo "=== install Golang ==="
 wget -nv https://dl.google.com/go/go${GO_VERSION}.${OS}-${ARCH}.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.${OS}-${ARCH}.tar.gz
-echo 'export GOPATH=$HOME/go' >> ${HOME}/.profile
-echo 'export PATH=$PATH:$GOPATH/bin' >> ${HOME}/.profile
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ${HOME}/.profile
-
 
 echo "=== install vs code ==="
 wget -nv -O code_amd64.deb https://go.microsoft.com/fwlink/?LinkID=760868

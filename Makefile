@@ -6,6 +6,9 @@ gcp-bootstrap:
 packer-build:
 	cd packer && packer build desktop.json
 
+unit:
+	go test ./test/unit/... -v
+
 test: clean
 	(cd vagrant && vagrant up)
 
