@@ -7,7 +7,7 @@ import (
 
 var packerVariables = []string{
 	"TF_VAR_crd_user",
-	"GCLOUD_ZONE",
+	"GOOGLE_COMPUTE_ZONE",
 	"GOOGLE_APPLICATION_CREDENTIALS",
 }
 
