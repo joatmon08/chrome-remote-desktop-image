@@ -1,11 +1,12 @@
 {
   "variables": {
     "username": "{{env `TF_VAR_crd_user`}}",
-    "gcloud_zone": "{{env `GCLOUD_ZONE`}}"
+    "gcloud_zone": "{{env `GCLOUD_ZONE`}}",
+    "commit_hash": "{{env `COMMIT_HASH`}}"
   },
   "builders": [
     {
-      "image_name": "chrome-remote-desktop-debian-9-{{timestamp}}",
+      "image_name": "chrome-remote-desktop-debian-9-{{user `commit_hash`}}",
       "instance_name": "crd-test-{{uuid}}",
       "image_family": "debian-9",
       "type": "googlecompute",
@@ -29,7 +30,11 @@
     {
       "type": "shell",
       "execute_command": "{{.Vars}} bash '{{.Path}}'",
-      "scripts": ["./install-desktop.sh", "./install-devtools.sh"]
+      "scripts": [
+        "./install-desktop.sh",
+        "./install-devtools.sh",
+        "./test.sh"
+      ]
     }
   ]
 }
