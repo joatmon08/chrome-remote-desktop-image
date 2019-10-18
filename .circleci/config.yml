@@ -1,0 +1,36 @@
+version: 2
+
+defaults: &defaults
+  environment:
+    GCLOUD_ZONE: "us-east-1"
+
+jobs:
+  unit:
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - checkout
+      - run:
+          name: Run some checks to ensure the image is ready to build
+          command: COMMIT_HASH=$CIRCLE_SHA1 make unit
+    
+  build:
+    docker:
+      - image: hashicorp/packer
+    steps:
+      - checkout
+      - run:
+          name: Build and test image
+          command: COMMIT_HASH=$CIRCLE_SHA1 make unit make packer-build
+
+workflows:
+  version: 2
+  image:
+    jobs:
+      - unit
+      - build:
+          requires:
+            - unit
+          filters:
+            branches:
+              only: master
