@@ -52,6 +52,3 @@ sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y -q docker-ce
 
 sudo usermod -aG docker $USER
-
-echo "=== install consul k8s dev ==="
-curl -sL http://consul-k8s.demo.gs/install.sh | bash
