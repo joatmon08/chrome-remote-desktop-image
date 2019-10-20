@@ -5,8 +5,10 @@
 # See environmental variables at then end of the script for configuration
 #
 
+set -o pipefail
+
 function install_desktop_env {
-  PACKAGES="desktop-base xscreensaver"
+  PACKAGES="desktop-base xscreensaver apt-transport-https libx11-xcb1 libxss1 libasound2 libxkbfile1"
 
   if [[ "$INSTALL_XFCE" != "yes" && "$INSTALL_CINNAMON" != "yes" ]] ; then
     # neither XFCE nor cinnamon specified; install both

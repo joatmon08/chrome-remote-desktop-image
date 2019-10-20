@@ -1,5 +1,11 @@
 #!/bin/bash -
 
+if [ ! -d "/opt/google/chrome-remote-desktop" ] 
+then
+    echo "Directory /opt/google/chrome-remote-desktop DOES NOT exist." 
+    exit 1
+fi
+
 git --version
 if [ $? -ne 0 ]; then
   echo "Git failed to install"
