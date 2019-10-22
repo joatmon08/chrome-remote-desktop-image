@@ -8,7 +8,7 @@
     {
       "image_name": "chrome-remote-desktop-debian-9-{{user `commit_hash`}}",
       "instance_name": "crd-test-{{uuid}}",
-      "image_family": "debian-9",
+      "image_family": "crd-debian-9",
       "type": "googlecompute",
       "project_id": "hc-da-test",
       "source_image_family": "debian-9",
