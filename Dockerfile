@@ -20,3 +20,7 @@ RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -
     && sudo apt-get update -y \
     && sudo apt-get install -y google-cloud-sdk \
     && sudo apt-get clean
+
+RUN git clone https://github.com/joatmon08/tf-helper.git \
+    && cd tf-helper/tfh/bin \
+    && sudo ln -s $PWD/tfh /usr/local/bin/tfh

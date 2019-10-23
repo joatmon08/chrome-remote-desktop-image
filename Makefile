@@ -14,3 +14,7 @@ test: clean
 
 clean:
 	(cd vagrant && vagrant destroy --force)
+
+docker:
+	docker build -t joatmon08/circleci-hashistack .
+	docker push joatmon08/circleci-hashistack:latest
