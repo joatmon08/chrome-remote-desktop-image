@@ -2,7 +2,8 @@
   "variables": {
     "username": "{{env `TF_VAR_crd_user`}}",
     "gcloud_zone": "{{env `GOOGLE_COMPUTE_ZONE`}}",
-    "commit_hash": "{{env `COMMIT_HASH`}}"
+    "commit_hash": "{{env `COMMIT_HASH`}}",
+    "project": "{{env `GOOGLE_PROJECT`}}"
   },
   "builders": [
     {
@@ -10,7 +11,7 @@
       "instance_name": "crd-test-{{uuid}}",
       "image_family": "crd-debian-9",
       "type": "googlecompute",
-      "project_id": "hc-da-test",
+      "project_id": "{{user `project}}",
       "source_image_family": "debian-9",
       "source_image_project_id": "debian-cloud",
       "ssh_username": "{{user `username`}}",

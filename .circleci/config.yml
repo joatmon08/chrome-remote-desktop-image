@@ -5,6 +5,7 @@ defaults: &defaults
   environment:
     GOOGLE_COMPUTE_ZONE: us-central1-a
     GOOGLE_APPLICATION_CREDENTIALS: /tmp/chrome-remote-desktop-image/workspace/packer-builder.json
+    GOOGLE_PROJECT: hc-da-test
 
 jobs:
 
