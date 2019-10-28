@@ -11,7 +11,7 @@
       "instance_name": "crd-test-{{uuid}}",
       "image_family": "crd-debian-9",
       "type": "googlecompute",
-      "project_id": "{{user `project}}",
+      "project_id": "{{user `project`}}",
       "source_image_family": "debian-9",
       "source_image_project_id": "debian-cloud",
       "ssh_username": "{{user `username`}}",
