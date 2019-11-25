@@ -18,3 +18,9 @@ GOOGLE_PROJECT=<google project you want to use>
 GCLOUD_SERVICE_KEY=<json formatted service account key>
 TF_VAR_crd_user=<user for the desktop login>
 ```
+
+## Dockerfile for CircleCI Builder
+
+The Dockerfile for the CircleCI builder is manually built.
+Run `make docker` in order to create and push the Dockerfile
+containing Packer and Terraform.

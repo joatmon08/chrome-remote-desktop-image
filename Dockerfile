@@ -2,8 +2,8 @@ FROM circleci/golang:1.13
 
 ENV OS="linux"
 ENV ARCH="amd64"
-ENV TERRAFORM_VERSION="0.12.12"
-ENV PACKER_VERSION="1.4.4"
+ENV TERRAFORM_VERSION="0.12.16"
+ENV PACKER_VERSION="1.4.5"
 
 RUN curl -s -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_${OS}_${ARCH}.zip \
     && unzip terraform.zip \

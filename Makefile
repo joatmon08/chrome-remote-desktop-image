@@ -16,5 +16,7 @@ clean:
 	(cd vagrant && vagrant destroy --force)
 
 docker:
-	docker build -t joatmon08/circleci-hashistack .
+	docker build -t joatmon08/circleci-hashistack:2.0 .
+	docker tag joatmon08/circleci-hashistack:2.0 joatmon08/circleci-hashistack:latest
+	docker push joatmon08/circleci-hashistack:2.0
 	docker push joatmon08/circleci-hashistack:latest
