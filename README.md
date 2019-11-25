@@ -7,9 +7,14 @@ on Debian, uses Chrome Remote Desktop.
 
 - Vagrant
 - Packer
-- `make gcp-bootstrap`: This command creates a GCP Service
-  Account for image baking.
+- Google Cloud Service Account with Admin access to Compute Engine & IAM
 
 ## Usage
 
-For testing locally, run `make test`.
+Add the following environment variables to the pipeline:
+
+```shell
+GOOGLE_PROJECT=<google project you want to use>
+GCLOUD_SERVICE_KEY=<json formatted service account key>
+TF_VAR_crd_user=<user for the desktop login>
+```
